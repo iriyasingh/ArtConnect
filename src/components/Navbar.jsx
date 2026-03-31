@@ -27,9 +27,9 @@ function Navbar({ cartCount }) {
 
   return (
     <nav style={{ 
-      background: 'white', 
+      background: 'var(--bg-primary)', 
       borderBottom: '1px solid var(--border-light)', 
-      padding: '1.5rem 4rem', 
+      padding: '1.25rem 2rem', 
       display: 'flex', 
       justifyContent: 'space-between', 
       alignItems: 'center',
@@ -39,30 +39,44 @@ function Navbar({ cartCount }) {
       boxShadow: 'var(--shadow-subtle)'
     }}>
       
-      <Link to="/" style={{ textDecoration: 'none', color: 'var(--text-primary)' }}>
-        <h2 className="serif" style={{ fontSize: '2rem', letterSpacing: '0.05em', margin: 0 }}>
+      <Link to="/" style={{ textDecoration: 'none', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ 
+          width: '32px', 
+          height: '32px', 
+          background: 'var(--accent-primary)', 
+          borderRadius: '2px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '1.2rem',
+          fontWeight: '700',
+          color: 'white'
+        }}>A</div>
+        <h2 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, letterSpacing: '-0.01em' }}>
           ArtConnect
         </h2>
       </Link>
 
-      <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
-        <Link to="/explore" style={{ color: 'var(--text-primary)', fontWeight: '500', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.15em' }}>Collections</Link>
-        <Link to="/artists" style={{ color: 'var(--text-primary)', fontWeight: '500', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.15em' }}>Creators</Link>
+      <div style={{ display: 'flex', gap: '4rem', alignItems: 'center' }}>
+        <Link to="/explore" style={{ color: 'var(--text-primary)', fontWeight: '500', fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', transition: 'var(--transition-smooth)' }}>Collections</Link>
+        <Link to="/artists" style={{ color: 'var(--text-primary)', fontWeight: '500', fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', transition: 'var(--transition-smooth)' }}>Creators</Link>
         
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', marginLeft: '1rem' }}>
-          <Link to="/cart" style={{ position: 'relative', color: 'var(--text-primary)' }}>
-            <FaShoppingCart style={{ fontSize: '1.2rem' }} />
+        <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center', marginLeft: '1.5rem', paddingLeft: '1.5rem', borderLeft: '1px solid var(--border-light)' }}>
+          <Link to="/cart" style={{ position: 'relative', color: 'var(--text-primary)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', transition: 'var(--transition-smooth)' }}>
+            <FaShoppingCart />
             {cartCount > 0 && (
               <span style={{ 
                 position: 'absolute', 
-                top: '-10px', 
+                top: '-8px', 
                 right: '-10px', 
-                background: 'var(--accent-gold)', 
+                background: 'var(--accent-primary)', 
                 color: 'white', 
-                fontSize: '0.65rem', 
-                padding: '2px 6px', 
-                borderRadius: '50%',
-                fontWeight: 'bold'
+                fontSize: '0.6rem', 
+                padding: '2px 5px', 
+                borderRadius: '2px',
+                fontWeight: '600',
+                minWidth: '20px',
+                textAlign: 'center'
               }}>
                 {cartCount}
               </span>
@@ -71,14 +85,15 @@ function Navbar({ cartCount }) {
 
           {user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-              <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontWeight: '600' }}>
-                <FaUser /> {user.name.split(' ')[0]}
+              <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--accent-primary)', fontWeight: '600', fontSize: '0.8rem', textDecoration: 'none', transition: 'var(--transition-smooth)' }}>
+                <FaUser style={{ fontSize: '0.9rem' }} /> 
+                <span>{user.name.split(' ')[0]}</span>
               </Link>
-              <FaSignOutAlt onClick={handleLogout} style={{ cursor: 'pointer', color: 'var(--text-muted)' }} title="Logout" />
+              <FaSignOutAlt onClick={handleLogout} style={{ cursor: 'pointer', color: 'var(--text-tertiary)', fontSize: '0.95rem', transition: 'var(--transition-smooth)' }} title="Logout" />
             </div>
           ) : (
-            <Link to="/login" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)' }}>
-              <FaUser style={{ fontSize: '1.1rem' }} />
+            <Link to="/login" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '1rem', transition: 'var(--transition-smooth)', textDecoration: 'none' }}>
+              <FaUser style={{ fontSize: '0.9rem' }} />
             </Link>
           )}
         </div>
@@ -87,4 +102,4 @@ function Navbar({ cartCount }) {
   );
 }
 
-export default Navbar;
+export default Navbar;

@@ -31,29 +31,59 @@ function Login() {
   };
 
   return (
-    <div className="container animate-reveal" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
-      <div style={{ maxWidth: '450px', width: '100%', padding: '4rem', background: 'white', border: '1px solid var(--border-light)' }}>
-        <h1 style={{ fontSize: '2.5rem', textAlign: 'center', marginBottom: '1rem' }}>Welcome Back</h1>
-        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '3rem', fontSize: '0.9rem' }}>Access your personalized gallery collection.</p>
+    <div className="animate-reveal" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 'calc(100vh - 80px)', background: 'var(--bg-secondary)', padding: '2rem' }}>
+      <div style={{ maxWidth: '420px', width: '100%', padding: '3rem', background: 'var(--bg-primary)', borderRadius: '4px', boxShadow: 'var(--shadow-light)', border: '1px solid var(--border-light)' }}>
         
-        {error && <p style={{ color: 'red', textAlign: 'center', marginBottom: '1rem', fontSize: '0.9rem' }}>{error}</p>}
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <div style={{ 
+            width: '48px', 
+            height: '48px', 
+            background: 'var(--accent-primary)', 
+            borderRadius: '4px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.5rem',
+            fontWeight: '700',
+            color: 'white',
+            margin: '0 auto 1.5rem'
+          }}>A</div>
+          <h1 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', fontWeight: '700' }}>Welcome Back</h1>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Sign in to your ArtConnect account</p>
+        </div>
         
-        <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        {error && <div style={{ background: '#FEE2E2', color: '#991B1B', padding: '1rem', borderRadius: '4px', marginBottom: '2rem', fontSize: '0.85rem', border: '1px solid #FECACA' }}>{error}</div>}
+        
+        <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div>
-            <label style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>Email Address</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Email Address" />
+            <label style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', display: 'block', marginBottom: '0.6rem', color: 'var(--text-primary)' }}>Email Address</label>
+            <input 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              placeholder="you@example.com"
+              style={{ fontSize: '0.95rem' }}
+            />
           </div>
           <div>
-            <label style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Password" />
+            <label style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', display: 'block', marginBottom: '0.6rem', color: 'var(--text-primary)' }}>Password</label>
+            <input 
+              type="password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+              placeholder="••••••••"
+              style={{ fontSize: '0.95rem' }}
+            />
           </div>
           
-          <button type="submit" className="primary" style={{ marginTop: '1rem', padding: '1.2rem' }}>Sign In</button>
+          <button type="submit" className="primary" style={{ marginTop: '0.5rem', padding: '1rem', fontSize: '0.85rem', fontWeight: '600' }}>Sign In</button>
         </form>
 
-        <p style={{ textAlign: 'center', marginTop: '3rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-          New to ArtConnect? <Link to="/register" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none', borderBottom: '1px solid currentColor' }}>Create an account</Link>
-        </p>
+        <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid var(--border-light)', textAlign: 'center' }}>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Don&apos;t have an account? <Link to="/register" style={{ color: 'var(--accent-primary)', fontWeight: '600', textDecoration: 'none' }}>Sign up</Link></p>
+        </div>
       </div>
     </div>
   );
