@@ -1,0 +1,75 @@
+.home {
+  font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+  height: 70vh;
+  background: url("../assets/art-bg.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+  color: white;
+  position: relative;
+}
+
+/* overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.hero p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* CATEGORY */
+.category-section {
+  padding: 40px 60px;
+}
+
+.category-section h2 {
+  margin-bottom: 20px;
+}
+
+.category-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.category-card {
+  min-width: 120px;
+  text-align: center;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: #ddd;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}

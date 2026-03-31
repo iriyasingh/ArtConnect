@@ -1,0 +1,61 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 40px;
+  border-bottom: 1px solid #eee;
+  background: white;
+}
+
+/* LOGO */
+.logo {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+/* LINKS */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  font-size: 20px;
+}
+
+.nav-links p {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links p:hover {
+  color: red;
+}
+
+/* ICONS */
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.nav-icons svg {
+  transition: 0.3s;
+}
+
+.nav-icons svg:hover {
+  color: red;
+  transform: scale(1.2);
+}
+.cart-icon {
+  position: relative;
+}
+
+.cart-icon span {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
