@@ -74,6 +74,20 @@ h1, h2, h3, h4, h5, h6, .serif {
   gap: 3rem;
 }
 
+/* Card Base Styles */
+.card {
+  background: var(--bg-primary);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-subtle);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+}
+
 /* Gallery Card */
 .gallery-card {
   background: transparent;
@@ -87,6 +101,59 @@ h1, h2, h3, h4, h5, h6, .serif {
 }
 
 .gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Product Card */
+.product-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--accent-primary);
+}
+
+.product-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Artist Card */
+.artist-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.artist-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--accent-primary);
+}
+
+.artist-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.artist-card:hover img {
   transform: scale(1.05);
 }
 
@@ -180,29 +247,156 @@ input:focus, select:focus, textarea:focus {
   background: rgba(217, 165, 116, 0.02);
 }
 
+/* Form Card */
+.form-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: var(--shadow-light);
+}
+
+/* Feature Card */
+.feature-card {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 2.5rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.feature-card:hover {
+  background: var(--accent-light);
+  transform: translateY(-4px);
+}
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
 /* Hover Effects */
 .gallery-card:hover .image-overlay {
   opacity: 1 !important;
   background: rgba(0, 0, 0, 0.5) !important;
 }
 
+/* Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.mt-2 { margin-top: 1rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-6 { margin-top: 3rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-6 { margin-bottom: 3rem; }
+
+.px-4 { padding-left: 2rem; padding-right: 2rem; }
+.py-4 { padding-top: 2rem; padding-bottom: 2rem; }
+
 /* Responsive */
+@media (max-width: 1024px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.5rem;
   }
   
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
   h1 {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
   }
   
   h2 {
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.1rem !important;
   }
   
   button {
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.6rem;
     font-size: 0.75rem;
+  }
+
+  .form-card {
+    padding: 2rem;
+  }
+
+  /* Auth pages - stack layout */
+  div[style*="gridTemplateColumns: '1fr 1fr'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Product cards */
+  .product-card img {
+    height: 250px;
+  }
+
+  /* Artist cards */
+  .artist-card img {
+    height: 250px;
+  }
+
+  /* Cart grid */
+  div[style*="gridTemplateColumns: '1.6fr 1fr'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card {
+    flex-direction: column !important;
+  }
+
+  /* Navigation spacing */
+  nav {
+    padding: 1rem 0 !important;
+  }
+
+  /* Section padding */
+  section {
+    padding: 3rem 0 !important;
   }
 }
