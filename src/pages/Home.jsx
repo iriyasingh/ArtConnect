@@ -21,69 +21,83 @@ function Home({ addToCart }) {
       
       {/* Hero Section */}
       <section style={{ 
-        height: '85vh', 
+        height: '92vh', 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
         padding: '0',
-        background: 'linear-gradient(135deg, var(--bg-secondary) 0%, #F0EEE8 100%)',
+        background: 'linear-gradient(135deg, #FEFDF9 0%, #F5F1EA 50%, #E8D4C0 100%)',
         position: 'relative',
         textAlign: 'center',
         overflow: 'hidden'
       }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.3 }}>
+          <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '300px', height: '300px', background: 'rgba(217, 165, 116, 0.15)', borderRadius: '50%' }}></div>
+          <div style={{ position: 'absolute', bottom: '-50px', left: '10%', width: '250px', height: '250px', background: 'rgba(217, 165, 116, 0.1)', borderRadius: '50%' }}></div>
+        </div>
         
-        <div style={{ position: 'relative', maxWidth: '820px', zIndex: 1, padding: '0 2rem' }}>
+        <div style={{ position: 'relative', maxWidth: '900px', zIndex: 1, padding: '0 2rem' }}>
           <div style={{
             display: 'inline-block',
-            padding: '0.5rem 1.5rem',
-            background: 'var(--accent-light)',
-            borderRadius: '4px',
-            marginBottom: '2rem'
+            padding: '0.75rem 2rem',
+            background: 'rgba(217, 165, 116, 0.15)',
+            borderRadius: '50px',
+            marginBottom: '2.5rem',
+            border: '1px solid rgba(217, 165, 116, 0.3)'
           }}>
             <span style={{ 
               color: 'var(--accent-primary)', 
-              fontWeight: '600', 
-              letterSpacing: '0.08em', 
+              fontWeight: '700', 
+              letterSpacing: '0.1em', 
               textTransform: 'uppercase', 
-              fontSize: '0.75rem'
+              fontSize: '0.7rem'
             }}>
-              Discover Original Art
+              ✨ Discover Premium Artwork
             </span>
           </div>
           
-          <h1 style={{ fontSize: '4.5rem', lineHeight: '1.1', marginBottom: '1.5rem', fontWeight: '700', color: 'var(--text-primary)' }}>
-            Connect with <span style={{ color: 'var(--accent-primary)' }}>Authentic</span> Art
+          <h1 style={{ fontSize: '5.5rem', lineHeight: '1.15', marginBottom: '1.5rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
+            Art For Everyone<span style={{ color: 'var(--accent-primary)' }}>.</span>
           </h1>
           
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '620px', margin: '0 auto 3rem', lineHeight: '1.7' }}>
-            Explore handpicked collections from talented artists worldwide. Buy original artwork directly from creators and support the art community.
+          <p style={{ fontSize: '1.3rem', color: 'var(--text-secondary)', marginBottom: '3.5rem', maxWidth: '700px', margin: '0 auto 3.5rem', lineHeight: '1.8', fontWeight: '500' }}>
+            Discover unique artworks from talented creators worldwide. Own original pieces that inspire, move, and transform your space.
           </p>
           
-          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/explore" style={{ textDecoration: 'none' }}>
-              <button className="primary" style={{ padding: '1.1rem 3rem', fontSize: '0.85rem' }}>Browse Collections</button>
+              <button className="primary" style={{ padding: '1.2rem 3.5rem', fontSize: '0.9rem' }}>Explore Gallery</button>
             </Link>
             <Link to="/artists" style={{ textDecoration: 'none' }}>
-              <button style={{ padding: '1.1rem 3rem', fontSize: '0.85rem' }}>Meet Creators</button>
+              <button style={{ padding: '1.2rem 3.5rem', fontSize: '0.9rem', borderColor: 'var(--accent-primary)', color: 'var(--accent-primary)' }}>Meet Artists</button>
             </Link>
           </div>
+          
+          <p style={{ marginTop: '3.5rem', fontSize: '0.9rem', color: 'var(--text-tertiary)', fontWeight: '600' }}>💳 Secure checkout • 🌍 Worldwide shipping • 🎨 100% authentic</p>
         </div>
       </section>
 
       {/* Featured Collections */}
-      <section className="container" style={{ padding: '6rem 0' }}>
-        <div style={{ marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: '700' }}>Featured Works</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>Discover the latest additions to our collection</p>
+      <section className="container" style={{ padding: '8rem 0' }}>
+        <div style={{ marginBottom: '5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '1.5rem', marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: '3.2rem', fontWeight: '800', color: 'var(--text-primary)' }}>Featured Works</h2>
+            <span style={{ fontSize: '1rem', color: 'var(--accent-primary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em' }}>New Arrivals</span>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '600px' }}>Curated selection of exceptional artworks from emerging and established artists</p>
         </div>
 
         {loading ? (
           <div style={{ textAlign: 'center', padding: '4rem' }}><p style={{ color: 'var(--text-secondary)' }}>Loading artworks...</p></div>
         ) : (
           <div className="grid">
-            {featuredArt.map(art => (
-              <div key={art._id} className="gallery-card">
-                <div style={{ overflow: 'hidden', height: '420px', background: 'var(--bg-secondary)', position: 'relative', borderRadius: '4px' }}>
+            {featuredArt.map((art, idx) => (
+              <div key={art._id} className="gallery-card" style={{ 
+                animation: `reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards`,
+                animationDelay: `${idx * 0.1}s`,
+                opacity: 0
+              }}>
+                <div style={{ overflow: 'hidden', height: '450px', background: 'var(--bg-secondary)', position: 'relative', borderRadius: '8px' }}>
                   <Link to={`/artwork/${art._id}`}>
                     <img 
                       src={art.image} 
@@ -93,25 +107,30 @@ function Home({ addToCart }) {
                   </Link>
                   <div style={{ 
                     position: 'absolute', 
-                    bottom: '1rem', 
-                    right: '1rem',
-                    opacity: 0
-                  }}>
+                    inset: 0,
+                    background: 'rgba(0,0,0,0)',
+                    opacity: 0,
+                    transition: 'var(--transition-smooth)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-end',
+                    padding: '2rem'
+                  }} className="image-overlay">
                     <button 
                       onClick={() => addToCart(art)}
                       className="primary"
-                      style={{ padding: '0.7rem 1.4rem', fontSize: '0.7rem' }}
+                      style={{ padding: '1rem', fontSize: '0.8rem', width: '100%' }}
                     >
-                      Collect
+                      Add to Collection
                     </button>
                   </div>
                 </div>
-                <div style={{ padding: '1.5rem 0' }}>
-                  <p style={{ color: 'var(--text-tertiary)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem', fontWeight: '600' }}>{art.category}</p>
+                <div style={{ padding: '2rem 0' }}>
+                  <p style={{ color: 'var(--text-tertiary)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem', fontWeight: '700' }}>{art.category}</p>
                   <Link to={`/artwork/${art._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: '600' }}>{art.name}</h3>
+                    <h3 style={{ fontSize: '1.35rem', marginBottom: '0.5rem', fontWeight: '700' }}>{art.name}</h3>
                   </Link>
-                  <p style={{ color: 'var(--accent-primary)', fontWeight: '700', fontSize: '1rem' }}>₹{art.price.toLocaleString()}</p>
+                  <p style={{ color: 'var(--accent-primary)', fontWeight: '800', fontSize: '1.1rem' }}>₹{art.price.toLocaleString()}</p>
                 </div>
               </div>
             ))}

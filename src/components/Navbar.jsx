@@ -29,53 +29,59 @@ function Navbar({ cartCount }) {
     <nav style={{ 
       background: 'var(--bg-primary)', 
       borderBottom: '1px solid var(--border-light)', 
-      padding: '1.25rem 2rem', 
+      padding: '1.1rem 2rem', 
       display: 'flex', 
       justifyContent: 'space-between', 
       alignItems: 'center',
       position: 'sticky',
       top: 0,
       zIndex: 1000,
-      boxShadow: 'var(--shadow-subtle)'
+      boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
     }}>
       
-      <Link to="/" style={{ textDecoration: 'none', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Link to="/" style={{ textDecoration: 'none', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
         <div style={{ 
-          width: '32px', 
-          height: '32px', 
-          background: 'var(--accent-primary)', 
-          borderRadius: '2px',
+          width: '36px', 
+          height: '36px', 
+          background: 'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%)', 
+          borderRadius: '6px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: '1.2rem',
-          fontWeight: '700',
+          fontSize: '1.3rem',
+          fontWeight: '800',
           color: 'white'
         }}>A</div>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, letterSpacing: '-0.01em' }}>
+        <h2 style={{ fontSize: '1.35rem', fontWeight: '800', margin: 0, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
           ArtConnect
         </h2>
       </Link>
 
-      <div style={{ display: 'flex', gap: '4rem', alignItems: 'center' }}>
-        <Link to="/explore" style={{ color: 'var(--text-primary)', fontWeight: '500', fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', transition: 'var(--transition-smooth)' }}>Collections</Link>
-        <Link to="/artists" style={{ color: 'var(--text-primary)', fontWeight: '500', fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', transition: 'var(--transition-smooth)' }}>Creators</Link>
+      <div style={{ display: 'flex', gap: '5rem', alignItems: 'center' }}>
+        <Link to="/explore" style={{ color: 'var(--text-primary)', fontWeight: '600', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', transition: 'var(--transition-smooth)', position: 'relative' }}>
+          Collections
+          <span style={{ position: 'absolute', bottom: '-4px', left: 0, width: 0, height: '2px', background: 'var(--accent-primary)', transition: 'var(--transition-smooth)' }} className="nav-underline"></span>
+        </Link>
+        <Link to="/artists" style={{ color: 'var(--text-primary)', fontWeight: '600', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', transition: 'var(--transition-smooth)', position: 'relative' }}>
+          Creators
+          <span style={{ position: 'absolute', bottom: '-4px', left: 0, width: 0, height: '2px', background: 'var(--accent-primary)', transition: 'var(--transition-smooth)' }} className="nav-underline"></span>
+        </Link>
         
-        <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center', marginLeft: '1.5rem', paddingLeft: '1.5rem', borderLeft: '1px solid var(--border-light)' }}>
-          <Link to="/cart" style={{ position: 'relative', color: 'var(--text-primary)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', transition: 'var(--transition-smooth)' }}>
+        <div style={{ display: 'flex', gap: '2.8rem', alignItems: 'center', marginLeft: '2rem', paddingLeft: '2rem', borderLeft: '1px solid var(--border-light)' }}>
+          <Link to="/cart" style={{ position: 'relative', color: 'var(--text-primary)', fontSize: '1.15rem', display: 'flex', alignItems: 'center', transition: 'var(--transition-smooth)', padding: '0.5rem' }}>
             <FaShoppingCart />
             {cartCount > 0 && (
               <span style={{ 
                 position: 'absolute', 
-                top: '-8px', 
-                right: '-10px', 
+                top: '-6px', 
+                right: '-8px', 
                 background: 'var(--accent-primary)', 
                 color: 'white', 
-                fontSize: '0.6rem', 
-                padding: '2px 5px', 
-                borderRadius: '2px',
-                fontWeight: '600',
-                minWidth: '20px',
+                fontSize: '0.65rem', 
+                padding: '3px 6px', 
+                borderRadius: '3px',
+                fontWeight: '700',
+                minWidth: '22px',
                 textAlign: 'center'
               }}>
                 {cartCount}
@@ -84,16 +90,16 @@ function Navbar({ cartCount }) {
           </Link>
 
           {user ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-              <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--accent-primary)', fontWeight: '600', fontSize: '0.8rem', textDecoration: 'none', transition: 'var(--transition-smooth)' }}>
-                <FaUser style={{ fontSize: '0.9rem' }} /> 
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.8rem' }}>
+              <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--accent-primary)', fontWeight: '700', fontSize: '0.85rem', textDecoration: 'none', transition: 'var(--transition-smooth)', padding: '0.5rem' }}>
+                <FaUser style={{ fontSize: '0.95rem' }} /> 
                 <span>{user.name.split(' ')[0]}</span>
               </Link>
-              <FaSignOutAlt onClick={handleLogout} style={{ cursor: 'pointer', color: 'var(--text-tertiary)', fontSize: '0.95rem', transition: 'var(--transition-smooth)' }} title="Logout" />
+              <FaSignOutAlt onClick={handleLogout} style={{ cursor: 'pointer', color: 'var(--text-tertiary)', fontSize: '1rem', transition: 'var(--transition-smooth)', padding: '0.5rem' }} title="Logout" />
             </div>
           ) : (
-            <Link to="/login" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '1rem', transition: 'var(--transition-smooth)', textDecoration: 'none' }}>
-              <FaUser style={{ fontSize: '0.9rem' }} />
+            <Link to="/login" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontSize: '1rem', transition: 'var(--transition-smooth)', textDecoration: 'none', fontWeight: '600', padding: '0.5rem' }}>
+              <FaUser style={{ fontSize: '0.95rem' }} />
             </Link>
           )}
         </div>
