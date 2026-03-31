@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { FaCheckCircle } from "react-icons/fa";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -11,7 +10,9 @@ import Artists from "./pages/Artists";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import About from "./pages/About";
+import Toast from "./components/Toast";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -35,35 +36,16 @@ function App() {
     <BrowserRouter>
       <Navbar cartCount={cart.length} />
 
-      {/* --- Toast Notification --- */}
-      {toast.show && (
-        <div style={{
-          position: 'fixed',
-          bottom: '2rem',
-          right: '2rem',
-          background: 'white',
-          color: 'var(--text-primary)',
-          padding: '1.2rem 2.5rem',
-          border: '1px solid var(--accent-gold)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          zIndex: 10000,
-          boxShadow: 'var(--shadow-hover)',
-          animation: 'reveal 0.4s ease-out forwards'
-        }}>
-          <FaCheckCircle style={{ color: '#10b981' }} />
-          <span style={{ fontSize: '0.85rem', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{toast.message}</span>
-        </div>
-      )}
+      <Toast message={toast.show ? toast.message : ""} />
 
-      <div style={{ minHeight: 'calc(100vh - 80px)' }}>
+      <main className="min-h-[calc(100vh-72px)]">
         <Routes>
           <Route path="/" element={<Home addToCart={addToCart} />} />
           <Route path="/explore" element={<Explore addToCart={addToCart} />} />
-          <Route path="/artwork/:id" element={<ArtworkDetail addToCart={addToCart} showToast={showToast} />} />
+          <Route path="/artwork/:id" element={<ArtworkDetail addToCart={addToCart} />} />
           <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
           <Route path="/artists" element={<Artists />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route 
@@ -75,7 +57,7 @@ function App() {
             } 
           />
         </Routes>
-      </div>
+      </main>
     </BrowserRouter>
   );
 }
